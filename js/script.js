@@ -1,21 +1,17 @@
-var options = {
-        id: 59777392,
-        width: 640,
-        loop: true
-    };
-
-var player = new Vimeo.Player('made-in-ny', options);
-
-player.setVolume(0);
+var iframe = document.querySelector('iframe');
+var player = new Vimeo.Player(iframe);
 
 player.on('play', function() {
     console.log('played the video!');
 });
 
-const num = document.getElementById('add-cuepoint').value;
-const msg = document.getElementById('add-cuepoint-msg').value;
+player.getVideoTitle().then(function(title) {
+    console.log('title:', title);
+});
 
 var addingCuePoints = () => {
+	const num = document.getElementById('add-cuepoint').value;
+	const msg = document.getElementById('add-cuepoint-msg').value;
 	player.addCuePoint(num, {
     customKey: msg
 	}).then(function(id) {
@@ -41,5 +37,19 @@ document.getElementById('add-cuepoint').value = 0;
 document.getElementById('add-cuepoint-msg').value = '';	
 };
 
+var gettingCuePoints = () => {
+	player.getCuePoints().then(function(cuePoints) {
+    // cuePoints = an array of cue point objects
+    console.log("Found Cue Points: ", cuePoints);
+	}).catch(function(error) {
+    switch (error.name) {
+        case 'UnsupportedError':
+            // cue points are not supported with the current player or browser
+            break;
 
-
+        default:
+            // some other error occurred
+            break;
+    }
+	});
+};

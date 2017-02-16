@@ -14,7 +14,9 @@
 		<div id=wrap>
 		  <h1>Vimeo Player Coding Challenge</h1>
 		  <div class=left>
-		      <div id="made-in-ny"></div>
+			  <div>
+			  	<iframe src="https://player.vimeo.com/video/76979871" width="340" height="220" frameborder="1"></iframe>	
+			  </div>
 		    <div class=console>
 		        <button class="clear btn">Clear Log</button>
 		        <h2>Message Log</h2>
@@ -32,7 +34,7 @@
 		      </fieldset>
 		      <fieldset class="getters js-getters">
 		        <legend>Getters</legend>
-		        <button id=get-cue-points-button class=js-getter data-getter=getCuePoints>Cue Points</button>
+		        <button id=get-cue-points-button class=js-getter onClick="gettingCuePoints()">Cue Points</button>
 		      </fieldset>
 		   </div>
 		   <script src="https://player.vimeo.com/api/player.js"></script>
