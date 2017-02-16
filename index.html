@@ -11,23 +11,23 @@
 		<link href="css/styles.css" rel="stylesheet">
 	</head>
 	<body>
-		<div id=wrap>
+		<div class="wrap">
 		  <h1>Vimeo Player Coding Challenge</h1>
 		  <div class=left>
 			  <div>
-			  	<iframe src="https://player.vimeo.com/video/76979871" width="340" height="220" frameborder="1"></iframe>	
+			  	<iframe src="https://player.vimeo.com/video/76979871" width="440" height="220" frameborder="1"></iframe>	
 			  </div>
-		    <div class=console>
+		    <div class="console">
 		        <button class="clear btn">Clear Log</button>
 		        <h2>Message Log</h2>
-		        <p class=output></p>
+		        <p id="msg-output"></p>
 		    </div>
 		  </div>
-		  <div class=right>
+		  <div class="right">
 		    <fieldset class="methods js-methods">
 		        <legend>Methods</legend>
 		        <div class="cue-points value-input">
-		            <input id=add-cuepoint type=number placeholder="select number" pattern=[0-9]+>
+		            <input id=add-cuepoint type=number value=0 placeholder="select number" pattern=[0-9]+>
 		            <input id=add-cuepoint-msg placeholder="enter message" type="text">
 		            <button id=add-cuepoint-button class="btn btn-large" onClick="addingCuePoints()">Add Cue Point</button>
 		        </div>

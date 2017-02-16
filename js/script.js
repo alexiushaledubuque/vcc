@@ -1,5 +1,6 @@
-var iframe = document.querySelector('iframe');
-var player = new Vimeo.Player(iframe);
+// Initial setup of the player
+const iframe = document.querySelector('iframe');
+const player = new Vimeo.Player(iframe);
 
 player.on('play', function() {
     console.log('played the video!');
@@ -9,7 +10,8 @@ player.getVideoTitle().then(function(title) {
     console.log('title:', title);
 });
 
-var addingCuePoints = () => {
+
+const addingCuePoints = () => {
 	const num = document.getElementById('add-cuepoint').value;
 	const msg = document.getElementById('add-cuepoint-msg').value;
 	player.addCuePoint(num, {
@@ -34,13 +36,14 @@ var addingCuePoints = () => {
 	});
 
 document.getElementById('add-cuepoint').value = 0;
+document.getElementById('add-cuepoint').focus();
 document.getElementById('add-cuepoint-msg').value = '';	
 };
 
-var gettingCuePoints = () => {
+const gettingCuePoints = () => {
 	player.getCuePoints().then(function(cuePoints) {
     // cuePoints = an array of cue point objects
-    console.log("Found Cue Points: ", cuePoints);
+    listCuePoints(cuePoints);
 	}).catch(function(error) {
     switch (error.name) {
         case 'UnsupportedError':
@@ -53,3 +56,14 @@ var gettingCuePoints = () => {
     }
 	});
 };
+
+const listCuePoints = (data) => {
+	let display = document.getElementById('msg-output');
+	display.innerHTML = "Cue Points: [<br>&nbsp;";
+
+	for (let i = 0; i < data.length; i++) {
+		let newLine = '&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"time": ' + data[i].time + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"data": ' + data[i].data.customKey + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"id": ' + data[i].id + "<br>&nbsp;&nbsp;}";
+		i !== data.length - 1 ? display.innerHTML += newLine + ',<br>' : display.innerHTML += newLine + '<br>';
+	}
+	display.innerHTML += ']';
+}

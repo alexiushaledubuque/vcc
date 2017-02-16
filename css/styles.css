@@ -462,7 +462,18 @@ template {
 
 /* Custom App Styles
    ========================================================================== */
-
-/*#add-cuepoint-msg, #add-cuepoint {
+.wrap {
+  margin: 40px;
+}
+#msg-output {
+  height: 220px;
+  width: 500px;
+  margin: 2px;
   border: 1px solid black;
-}*/
+  float: left;
+  overflow: scroll;
+}
+.right {
+  float: left;
+  margin-left: 100px;
+}
