@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Add Video Cues</title>
+		<link href="css/styles.css" rel="stylesheet">
 	</head>
 	<body>
 		<div id=wrap>
@@ -19,6 +26,7 @@
 		        <legend>Methods</legend>
 		        <div class="cue-points value-input">
 		            <input id=add-cuepoint type=number pattern=[0-9]+>
+		            <input id=add-cuepoint-msg type="text">
 		            <button id=add-cuepoint-button class="btn btn-large" data-method=loadVideo>Add Cue Point</button>
 		        </div>
 		      </fieldset>
@@ -28,7 +36,7 @@
 		      </fieldset>
 		   </div>
 		   <script src="https://player.vimeo.com/api/player.js"></script>
-		   <script src="/static/internal/api-demo.js"></script>
+		   <script src="js/script.js"></script>
 		 </div>
 </body>
 </html>
