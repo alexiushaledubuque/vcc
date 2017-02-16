@@ -16,36 +16,17 @@ player.on('cuepoint', function(data) {
     // data is an object containing properties specific to that event
     console.log(JSON.stringify(data));
     var overlay = document.getElementById('cue-msg');
-    overlay.innerHTML = data.data.customKey;
+    overlay.innerHTML += data.data.customKey + "<br>";
 
-   //  player.getCurrentTime().then(function(seconds) {
-			// // seconds = the current playback position
-			// console.log('Seconds: ', seconds);
-			// console.log('Data.time: ', data.time);
-			// 	if (seconds > (data.time + 5)){
-			// 		console.log("need to hide");
-			// 		overlay.style.visibility = 'hidden';
-			// 	}
-			// }).catch(function(error) {
-			// // an error occurred
-			// });
-
-			// duration();
-			player.getDuration().then(function(duration) {
-	    	// duration = the duration of the video in seconds
-	    	console.log('duration: ', duration);
-				}).catch(function(error) {
-	    	// an error occurred
-			});
+		player.on('timeupdate', function(timestamp) {
+  		// data is an object containing properties specific to that event
+  		console.log('Time Update - timestamp: ', timestamp.seconds);
+  		console.log('Cue Time plus 5: ', data.time + 5);
+  		if (timestamp.seconds > data.time + 5){
+  			document.getElementById('cue-msg').innerHTML = ''; 
+  		}
+		});
 });
-
-function timeout_trigger() {
-    document.getElementById('cue-msg').innerHTML = '';   
-}
-function duration() {
-    const timeout = setTimeout('timeout_trigger()', 3000);
-    document.getElementById('msg-output').innerHTML = 'The timeout has been started';
-}
 
 const addingCuePoints = () => {
 	const num = document.getElementById('add-cuepoint').value;
