@@ -465,6 +465,23 @@ template {
 .wrap {
   margin: 40px;
 }
+.video-container {
+  width: 480;
+  height: 300;
+  border: 2px onset black;
+}
+#cue-msg {
+  position: absolute; 
+  top: 100px; 
+  color: #FFF; 
+  text-align: center;
+  margin: 40px;
+  font-size: 20px;
+  background-color: rgba(221, 221, 221, 0.3);
+  width: 60px;
+  padding: 10px 0;
+  z-index: 2147483647;
+}
 #msg-output {
   height: 220px;
   width: 500px;
