@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+	</head>
+	<body>
+		<div id=wrap>
+		  <h1>Vimeo Player Coding Challenge</h1>
+		  <div class=left>
+		      <iframe src="https://player.vimeo.com/video/76979871" width=640 height=360 frameborder=0 webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		    <div class=console>
+		        <button class="clear btn">Clear Log</button>
+		        <h2>Message Log</h2>
+		        <p class=output></p>
+		    </div>
+		  </div>
+		  <div class=right>
+		    <fieldset class="methods js-methods">
+		        <legend>Methods</legend>
+		        <div class="cue-points value-input">
+		            <input id=add-cuepoint type=number pattern=[0-9]+>
+		            <button id=add-cuepoint-button class="btn btn-large" data-method=loadVideo>Add Cue Point</button>
+		        </div>
+		      </fieldset>
+		      <fieldset class="getters js-getters">
+		        <legend>Getters</legend>
+		        <button id=get-cue-points-button class=js-getter data-getter=getCuePoints>Cue Points</button>
+		      </fieldset>
+		   </div>
+		   <script src="https://player.vimeo.com/api/player.js"></script>
+		   <script src="/static/internal/api-demo.js"></script>
+		 </div>
+</body>
+</html>
