@@ -466,9 +466,8 @@ template {
   margin: 40px;
 }
 .video-container {
-  width: 480;
-  height: 300;
-  border: 2px onset black;
+  width: 500;
+  height: 400;
 }
 #cue-msg {
   position: absolute; 
@@ -489,6 +488,9 @@ template {
   border: 1px solid black;
   float: left;
   overflow: scroll;
+}
+#display-cues {
+  
 }
 .right {
   float: left;

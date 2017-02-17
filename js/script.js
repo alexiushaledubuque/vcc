@@ -75,6 +75,13 @@ const gettingCuePoints = () => {
 };
 
 const listCuePoints = (data) => {
+    // create each list item for each cue point
+
+    // for (let i = 0; i < data.length; i++) {
+    //     let listItem = '<li>' + data[i].data.customKey + data[i].time + '</li>';
+    //     display.innerHTML = listItem;
+    // }
+
 	display.innerHTML = "Cue Points: [<br>&nbsp;";
 
 	for (let i = 0; i < data.length; i++) {
