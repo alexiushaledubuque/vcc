@@ -14,17 +14,16 @@ player.getVideoTitle().then(function(title) {
 
 player.on('cuepoint', function(data) {
     // data is an object containing properties specific to that event
-    console.log(JSON.stringify(data));
+    document.getElementById('cue-msg').style.display = 'block';
     var overlay = document.getElementById('cue-msg');
-    overlay.innerHTML += data.data.customKey + "<br>";
+    overlay.innerHTML = data.data.customKey + "<br>";
 
 		player.on('timeupdate', function(timestamp) {
-  		// data is an object containing properties specific to that event
-  		console.log('Time Update - timestamp: ', timestamp.seconds);
-  		console.log('Cue Time plus 5: ', data.time + 5);
-  		if (timestamp.seconds > data.time + 5){
-  			document.getElementById('cue-msg').innerHTML = ''; 
-  		}
+      		// data is an object containing properties specific to that event
+      		if (timestamp.seconds > data.time + 5){
+      			document.getElementById('cue-msg').innerHTML = ''; 
+                document.getElementById('cue-msg').style.display = 'none'
+      		}
 		});
 });
 
