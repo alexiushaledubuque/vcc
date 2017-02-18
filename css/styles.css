@@ -1,8 +1,13 @@
 /* Custom App Styles
    ========================================================================== */
+html {
+  background-color: #E6F1FC;
+  height: 90%;
+  width: 90%;
+  margin: 30px;
+}
 .container {
   margin: 40px;
-  background-color: #E6F1FC;
 }
 #video-wrapper {
   float: left;
