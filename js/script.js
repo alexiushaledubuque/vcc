@@ -1,7 +1,11 @@
 // Initial setup of the player
 const iframe = document.querySelector('iframe');
 const player = new Vimeo.Player(iframe);
-let display = document.getElementById('msg-output');
+const display = document.getElementById('msg-output');
+const timeouts = [];
+
+// Set focus on adding time for cue point
+document.getElementById('add-cuepoint').focus();
 
 // Player Events
 player.on('play', function() {
@@ -9,7 +13,7 @@ player.on('play', function() {
 });
 
 player.getVideoTitle().then(function(title) {
-    console.log('title:', title);
+    // console.log('title:', title);
 });
 
 player.on('cuepoint', function(data) {
@@ -18,13 +22,17 @@ player.on('cuepoint', function(data) {
     var overlay = document.getElementById('cue-msg');
     overlay.innerHTML = data.data.customKey + "<br>";
 
-		player.on('timeupdate', function(timestamp) {
-      		// data is an object containing properties specific to that event
-      		if (timestamp.seconds > data.time + 5){
-      			document.getElementById('cue-msg').innerHTML = ''; 
-                document.getElementById('cue-msg').style.display = 'none'
-      		}
-		});
+    timeouts.forEach(function(v){
+        window.clearTimeout(v);
+    });
+
+    timeouts = [];
+
+    timeouts.push(window.setTimeout(() => {
+        document.getElementById('cue-msg').innerHTML = ''; 
+        document.getElementById('cue-msg').style.display = 'none'
+    }, 5000));
+
 });
 
 const clearLog = () => {
@@ -35,10 +43,9 @@ const addingCuePoints = () => {
 	const num = document.getElementById('add-cuepoint').value;
 	const msg = document.getElementById('add-cuepoint-msg').value;
 	player.addCuePoint(num, {
-    customKey: msg
+        customKey: msg
 	}).then(function(id) {
     // cue point was added successfully
-    console.log('cue point was added successfully');
 	}).catch(function(error) {
     switch (error.name) {
         case 'UnsupportedError':
@@ -55,14 +62,16 @@ const addingCuePoints = () => {
     }
 	});
 
-document.getElementById('add-cuepoint').value = 0;
-document.getElementById('add-cuepoint').focus();
-document.getElementById('add-cuepoint-msg').value = '';	
+    gettingCuePoints();
+    document.getElementById('add-cuepoint').value = 0;
+    document.getElementById('add-cuepoint').focus();
+    document.getElementById('add-cuepoint-msg').value = '';	
 };
 
 const gettingCuePoints = () => {
 	player.getCuePoints().then(function(cuePoints) {
     // cuePoints = an array of cue point objects
+    console.log('cuePoints: ', cuePoints);
     listCuePoints(cuePoints);
 	}).catch(function(error) {
     switch (error.name) {
@@ -82,7 +91,7 @@ const listCuePoints = (data) => {
     document.getElementById('cue-list').innerHTML = '';
 
 	for (let i = 0; i < data.length; i++) {
-		let newLine = '&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"time": ' + data[i].time + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"data": ' + data[i].data.customKey + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"id": ' + data[i].id + "<br>&nbsp;&nbsp;}";
+		let newLine = '<div class="single-cue">&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"time": ' + data[i].time + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"data": ' + data[i].data.customKey + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"id": ' + data[i].id + "<br>&nbsp;&nbsp;}</div>";
 		i !== data.length - 1 ? display.innerHTML += newLine + ',<br>' : display.innerHTML += newLine + '<br>';
         let select = '<option value=' + data[i].id + '> Msg:&nbsp;' + data[i].data.customKey + '&nbsp;&nbsp;ID: ' + data[i].id + '</option>';
         document.getElementById('cue-list').innerHTML += select;
