@@ -96,7 +96,6 @@ const listCuePoints = (data) => {
 
 const deletingACuePoint = () => {
     const id = document.getElementById('cue-list').value;
-    console.log("id: ", id);
     player.removeCuePoint(id).then(function(id) {
     // cue point was removed successfully
     }).catch(function(error) {
