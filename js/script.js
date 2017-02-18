@@ -83,7 +83,7 @@ const listCuePoints = (data) => {
     // }
 
 	display.innerHTML = "Cue Points: [<br>&nbsp;";
-    // let select = '';
+    document.getElementById('cue-list').innerHTML = '';
 
 	for (let i = 0; i < data.length; i++) {
 		let newLine = '&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"time": ' + data[i].time + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"data": ' + data[i].data.customKey + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"id": ' + data[i].id + "<br>&nbsp;&nbsp;}";
@@ -94,6 +94,26 @@ const listCuePoints = (data) => {
 	display.innerHTML += ']';
 }
 
-const deletingACuePoint = (id) => {
-    
+const deletingACuePoint = () => {
+    const id = document.getElementById('cue-list').value;
+    console.log("id: ", id);
+    player.removeCuePoint(id).then(function(id) {
+    // cue point was removed successfully
+    }).catch(function(error) {
+        switch (error.name) {
+            case 'UnsupportedError':
+                // cue points are not supported with the current player or browser
+                break;
+
+            case 'InvalidCuePoint':
+                // a cue point with the id passed wasn’t found
+                break;
+
+            default:
+                // some other error occurred
+                break;
+        }
+    });
+    document.getElementById('cue-list').innerHTML = '';
+    gettingCuePoints();
 }
