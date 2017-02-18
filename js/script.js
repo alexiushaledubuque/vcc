@@ -28,6 +28,10 @@ player.on('cuepoint', function(data) {
 		});
 });
 
+const clearLog = () => {
+    document.getElementById('msg-output').innerHTML = '';
+}
+
 const addingCuePoints = () => {
 	const num = document.getElementById('add-cuepoint').value;
 	const msg = document.getElementById('add-cuepoint-msg').value;

@@ -8,27 +8,19 @@
     <meta name="author" content="">
 
     <title>Add Video Cues</title>
+    <link href="css/normalize.css" rel="stylesheet">
 		<link href="css/styles.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="wrap">
+		<div class="container">
 		  <h1>Vimeo Player Coding Challenge</h1>
-		  <div class=left>
-			  <div class="video-container">
+		  <section>
+			  <div id="video-wrapper">
 			  	<iframe src="https://player.vimeo.com/video/76979871" width="500" height="400" frameborder="1"></iframe>
-			  	<div id="cue-msg"></div>	
 			  </div>
-		    <div class="console">
-		        <button class="clear btn">Clear Log</button>
-		        <h2>Video Cues:</h2>
-		        <p id="msg-output">
-		        	<ol id="display-cues"></ol>
-		        </p>
-		    </div>
-		  </div>
-		  <div class="right">
-		    <fieldset class="methods js-methods">
-		        <legend>Methods</legend>
+	  		<div class="right">
+		    	<fieldset>
+		        <legend>Player Methods</legend>
 		        <div class="cue-points value-input">
 		            <input id=add-cuepoint type=number value=0 placeholder="select number" pattern=[0-9]+>
 		            <input id=add-cuepoint-msg placeholder="enter message" type="text">
@@ -39,13 +31,20 @@
 		        	<button id="delete-cue-point" onClick="deletingACuePoint()">Remove Cue Point</button>
 		        </div>
 		      </fieldset>
-		      <fieldset class="getters js-getters">
-		        <legend>Getters</legend>
-		        <button id=get-cue-points-button class=js-getter onClick="gettingCuePoints()">Cue Points</button>
+		      <fieldset>
+		        <legend>Get Data</legend>
+		        <button id="get-cue-points" onClick="gettingCuePoints()">Cue Points</button>
 		      </fieldset>
-		   </div>
-		   <script src="https://player.vimeo.com/api/player.js"></script>
-		   <script src="js/script.js"></script>
-		 </div>
-</body>
+				</div>
+		    <div class="msg-wrapper">
+	      	<button class="clear btn" onClick="clearLog()">Clear Log</button>
+	      	<h2>Video Cues:</h2>
+		      <p id="msg-output">
+		      	<ol id="display-cues"></ol>
+		      </p>	
+	      </div>
+		  </section>
+		<script src="https://player.vimeo.com/api/player.js"></script>
+		<script src="js/script.js"></script>
+	</body>
 </html>
