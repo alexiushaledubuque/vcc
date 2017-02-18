@@ -87,6 +87,8 @@ const listCuePoints = (data) => {
 	for (let i = 0; i < data.length; i++) {
 		let newLine = '&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"time": ' + data[i].time + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"data": ' + data[i].data.customKey + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"id": ' + data[i].id + "<br>&nbsp;&nbsp;}";
 		i !== data.length - 1 ? display.innerHTML += newLine + ',<br>' : display.innerHTML += newLine + '<br>';
+        let select += '<option value=' + data[i].id + '>' + data[i].data.customKey + '</option>';
+        document.getElementById('cue-list').innerHTML = select;
 	}
 	display.innerHTML += ']';
 }

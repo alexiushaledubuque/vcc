@@ -481,6 +481,9 @@ template {
   padding: 10px 0;
   z-index: 2147483647;
 }
+#remove-cuepoint {
+  padding-top: 5px;
+}
 #msg-output {
   height: 220px;
   width: 500px;
@@ -490,7 +493,7 @@ template {
   overflow: scroll;
 }
 #display-cues {
-  
+
 }
 .right {
   float: left;
