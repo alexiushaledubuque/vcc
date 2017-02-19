@@ -40,7 +40,7 @@ fieldset, input, option {
   color: #000080; 
   background-color: #EBEBF1;
   background-color: rgba(0, 0, 0, .3);
-  font-size: 15px;
+  font-size: large;
   font-weight: bold;
   height: 50px;
   width: 300px;
@@ -66,6 +66,9 @@ fieldset, input, option {
   float: right;
   padding-right: 5px;
   padding-top: 20px; 
+}
+.get-video-cues {
+  float: right;
 }
 #remove-cuepoint {
   padding-top: 5px;

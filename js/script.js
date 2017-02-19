@@ -13,14 +13,18 @@ player.on('play', function() {
 });
 
 player.getVideoTitle().then(function(title) {
-    // console.log('title:', title);
+    console.log('title:', title);
 });
 
+// Display video cue points
 player.on('cuepoint', function(data) {
     // data is an object containing properties specific to that event
     document.getElementById('cue-msg').style.display = 'block';
     var overlay = document.getElementById('cue-msg');
     overlay.innerHTML = data.data.customKey + "<br>";
+
+    // Message display functionality - each message is displayed up to 5 seconds
+    // but is replaced by another message if the seconds conflict
 
     timeouts.forEach(function(v){
         window.clearTimeout(v);
