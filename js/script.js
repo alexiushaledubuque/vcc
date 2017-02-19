@@ -87,16 +87,16 @@ const gettingCuePoints = () => {
 };
 
 const listCuePoints = (data) => {
-	display.innerHTML = "Cue Points: [<br>&nbsp;";
+	// display.innerHTML = "Cue Points: [<br>&nbsp;";
     document.getElementById('cue-list').innerHTML = '';
 
 	for (let i = 0; i < data.length; i++) {
-		let newLine = '<div class="single-cue">&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"time": ' + data[i].time + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"data": ' + data[i].data.customKey + ',<br>&nbsp;&nbsp;&nbsp;&nbsp;"id": ' + data[i].id + "<br>&nbsp;&nbsp;}</div>";
+		let newLine = '<div class="single-cue">&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;' + data[i].data.customKey + '&nbsp;&nbsp;&nbsp;&nbsp;' +  data[i].time + "&nbsp;&nbsp;</div>";
 		i !== data.length - 1 ? display.innerHTML += newLine + ',<br>' : display.innerHTML += newLine + '<br>';
-        let select = '<option value=' + data[i].id + '> Msg:&nbsp;' + data[i].data.customKey + '&nbsp;&nbsp;ID: ' + data[i].id + '</option>';
+        let select = '<option value=' + data[i].id + '> Msg:&nbsp;' + data[i].data.customKey + '&nbsp;&nbsp;</option>';
         document.getElementById('cue-list').innerHTML += select;
 	}
-	display.innerHTML += ']';
+	// display.innerHTML += ']';
 }
 
 const deletingACuePoint = () => {
