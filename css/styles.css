@@ -14,15 +14,24 @@ html {
   border: 5px outset black;
   border-radius: 5px;
 }
-h1 {
+h1, h2 {
   text-align: center;
+  color: #8A2BE2;
+}
+legend, input {
+  color: #8A2BE2;
+}
+legend {
+  font-weight: bold;
 }
 button {
   border-radius: 5px;
+  color: #483D8B;
+  background-color: #FFFFE0;
 }
 fieldset, input, option {
   border-radius: 5px;
-  border: 2px inset silver;
+  border: 2px inset #4682B4;
 }
 #add-cuepoint {
   width: 50px;
@@ -77,7 +86,7 @@ fieldset, input, option {
   height: 285px;
   width: 490px;
   margin: 2px;
-  border: 2px inset silver;
+  border: 2px inset #4682B4;
   border-radius: 5px;
   float: left;
   color: #000080;
