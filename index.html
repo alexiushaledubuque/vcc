@@ -16,7 +16,7 @@
 		  <h1>Vimeo Player Coding Challenge</h1>
 		  <section>
 			  <div class="video-wrapper">
-			  	<iframe src="https://player.vimeo.com/video/76979871" width="500" height="480" frameborder="1"></iframe>
+			  	<iframe src="https://player.vimeo.com/video/76979871" width=640 height=485 frameborder=0  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 			  </div>
 			  <div id="cue-msg"></div>
 	  		<div class="right">
@@ -35,13 +35,15 @@
 		      </fieldset>
 				</div>
 		    <div class="msg-wrapper">
-	      	<button class="clear btn" onClick="clearLog()">Clear Log</button>
+	      	<button class="clear btn" onClick="clearLog()">Clear Cue List</button>
+	      	<button class="clear btn" onClick="clearLog()">Clear Cue List</button>
 	      	<h2>Video Cues:</h2>
 		      <p id="msg-output">
 		      	<ol id="display-cues"></ol>
 		      </p>	
 	      </div>
 		  </section>
+		  <script src="http://momentjs.com/downloads/moment.js"></script>
 		<script src="https://player.vimeo.com/api/player.js"></script>
 		<script src="js/script.js"></script>
 	</body>

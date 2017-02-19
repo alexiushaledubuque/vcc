@@ -11,7 +11,7 @@ html {
 }
 .video-wrapper {
   float: left;
-  margin-left: 30px;
+  /*margin-left: 30px;*/
   border: 5px outset black;
   border-radius: 5px;
 }
@@ -30,6 +30,9 @@ fieldset, input, option {
 }
 #add-cuepoint-msg {
   width: 285px;
+}
+#add-cuepoint, #add-cuepoint-msg {
+  text-align: center;
 }
 #cue-msg {
   display: none;
@@ -52,11 +55,21 @@ fieldset, input, option {
   border-radius: 5px;
   background-color: #FBF8F8;  
 }
+#msg-align {
+  float: left;
+  margin-left: 5px;
+  padding-top: 5px;
+}
+#time-align {
+  float: right;
+  padding-right: 5px;
+  padding-top: 25px; 
+}
 #remove-cuepoint {
   padding-top: 5px;
 }
 #msg-output {
-  height: 220px;
+  height: 285px;
   width: 490px;
   margin: 2px;
   border: 2px inset silver;
@@ -66,5 +79,5 @@ fieldset, input, option {
 }
 .right, .msg-wrapper {
   float: left;
-  margin: 0 100px 15px 40px;
+  margin: 0 20px 15px 40px;
 }

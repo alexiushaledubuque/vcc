@@ -2,7 +2,7 @@
 const iframe = document.querySelector('iframe');
 const player = new Vimeo.Player(iframe);
 const display = document.getElementById('msg-output');
-const timeouts = [];
+let timeouts = [];
 
 // Set focus on adding time for cue point
 document.getElementById('add-cuepoint').focus();
@@ -17,6 +17,7 @@ player.getVideoTitle().then(function(title) {
 });
 
 player.on('cuepoint', function(data) {
+    console.log('1st timeouts: ', timeouts);
     // data is an object containing properties specific to that event
     document.getElementById('cue-msg').style.display = 'block';
     var overlay = document.getElementById('cue-msg');
@@ -33,6 +34,7 @@ player.on('cuepoint', function(data) {
         document.getElementById('cue-msg').style.display = 'none'
     }, 5000));
 
+    console.log('2nd timeouts: ', timeouts);
 });
 
 const clearLog = () => {
@@ -62,16 +64,21 @@ const addingCuePoints = () => {
     }
 	});
 
-    gettingCuePoints();
+    gettingCuePoints(); // Auto-populate the cue log and the dropdown list with each new cue
     document.getElementById('add-cuepoint').value = 0;
     document.getElementById('add-cuepoint').focus();
     document.getElementById('add-cuepoint-msg').value = '';	
 };
 
+const timeConversion = (sec) => {
+    return moment().startOf('day')
+            .seconds(sec)
+            .format('H:mm:ss');
+}
+
 const gettingCuePoints = () => {
 	player.getCuePoints().then(function(cuePoints) {
     // cuePoints = an array of cue point objects
-    console.log('cuePoints: ', cuePoints);
     listCuePoints(cuePoints);
 	}).catch(function(error) {
     switch (error.name) {
@@ -87,16 +94,20 @@ const gettingCuePoints = () => {
 };
 
 const listCuePoints = (data) => {
-	// display.innerHTML = "Cue Points: [<br>&nbsp;";
+    display.innerHTML = '';
     document.getElementById('cue-list').innerHTML = '';
 
 	for (let i = 0; i < data.length; i++) {
-		let newLine = '<div class="single-cue">&nbsp;&nbsp;&nbsp;' + data[i].data.customKey + '<span id="time' +  data[i].time + "&nbsp;&nbsp;</div>";
-		i !== data.length - 1 ? display.innerHTML += newLine + ',<br>' : display.innerHTML += newLine + '<br>';
-        let select = '<option value=' + data[i].id + '> Msg:&nbsp;' + data[i].data.customKey + '&nbsp;&nbsp;</option>';
+        let newLine = '<div class="single-cue"><span id="msg-align">' + data[i].data.customKey + 
+        '</span><span id="time-align">' +  timeConversion(data[i].time) + '</span></div>';
+		
+        i !== data.length - 1 ? display.innerHTML += newLine : display.innerHTML += newLine;
+        
+        let select = '<option value=' + data[i].id + '><br>&nbsp;' + data[i].data.customKey + 
+        '&nbsp;&nbsp;</option>';
+        
         document.getElementById('cue-list').innerHTML += select;
 	}
-	// display.innerHTML += ']';
 }
 
 const deletingACuePoint = () => {
