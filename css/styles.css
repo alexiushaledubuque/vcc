@@ -39,13 +39,13 @@ fieldset, input, option {
   position: absolute; 
   margin-top: 100px;
   margin-left: 60px; 
-  color: #FFFFFF; 
-  background-color: #E1E2E3;
+  color: #2C3E50; 
+  background-color: #F4ECF7;
   font-size: 18px;
   height: 30px;
   width: 200px;
   padding: 10px 0;
-  z-index: 2147483647;
+  z-index: 7;
 }
 .single-cue {
   height: 20%;

@@ -17,7 +17,6 @@ player.getVideoTitle().then(function(title) {
 });
 
 player.on('cuepoint', function(data) {
-    console.log('1st timeouts: ', timeouts);
     // data is an object containing properties specific to that event
     document.getElementById('cue-msg').style.display = 'block';
     var overlay = document.getElementById('cue-msg');
@@ -33,8 +32,6 @@ player.on('cuepoint', function(data) {
         document.getElementById('cue-msg').innerHTML = ''; 
         document.getElementById('cue-msg').style.display = 'none'
     }, 5000));
-
-    console.log('2nd timeouts: ', timeouts);
 });
 
 const clearLog = () => {
