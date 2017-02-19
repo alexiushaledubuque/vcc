@@ -23,26 +23,26 @@
 		    	<fieldset>
 		        <legend class="color-option">Player Methods</legend>
 		        <div class="cue-points">
-		            <input id=add-cuepoint type=number pattern=[0-9]+>
-		            <input id=add-cuepoint-msg placeholder="cue message" type="text" maxlength="60">
-		            <button class="color-option" onClick="addingCuePoints()">Add Cue Point</button>
+		            <input id='add-cuepoint' type=number pattern=[0-9]+>
+		            <input id='add-cuepoint-msg' placeholder="cue message" type="text" maxlength="60">
+		            <button id='all-buttons' class="color-option" onClick="addingCuePoints()">Add Cue Point</button>
 		        </div>
 		        <div id="remove-cuepoint">
 		        		<!-- add text wrapping of cue message -->
 		        	<select id="cue-list" style="width:320px"></select> 
-		        	<button id="delete-cue-point" class="color-option" onClick="deletingACuePoint()">Remove Cue Point</button>
+		        	<button id='all-buttons' class="color-option" onClick="deletingACuePoint()">Remove Cue Point</button>
 		        </div>
 		      </fieldset>
 				</div>
 		    <div class="msg-wrapper">
-	      	<button class="clear color-option" onClick="clearLog()">Clear Cue List</button>
-	      	<button class="get-video-cues color-option" onClick="gettingCuePoints()">Get Video Cues</button>
+	      	<button id='all-buttons' class="clear color-option" onClick="clearLog()">Clear Cue List</button>
+	      	<button id='all-buttons' class="get-video-cues color-option" onClick="gettingCuePoints()">Get Video Cues</button>
 	      	<!-- <label for=color-input>Color</label> -->
 	      	<fieldset class="cc">
 	      		<legend class="color-option">Color Controls</legend>
 	      		<div> 
-              <button id="pick-any-color" class="color-option" onClick="getRandomColor()">Random Color Picker</button>
-              <button id=default-color-button class="color-option" onClick="window.location.reload();">Default</button>
+              <button id='all-buttons' class="color-option" onClick="getRandomColor()">Random Color Picker</button>
+              <button id='all-buttons' class="color-option" onClick="defaultColors()">Default</button>
           	</div>	
 	      	</fieldset>
           
@@ -54,7 +54,8 @@
 		      </p>	
 	      </div>
 		  </section>
-		  <script src="http://momentjs.com/downloads/moment.js"></script>
+		</div>
+		<script src="http://momentjs.com/downloads/moment.js"></script>
 		<script src="https://player.vimeo.com/api/player.js"></script>
 		<script src="js/script.js"></script>
 	</body>

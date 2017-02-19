@@ -89,10 +89,9 @@ const getRandomColor = () => {
     for (let i = 0; i < 6; i++ ) {
         color += letters[Math.floor(Math.random() * 16)];
     }
-    // document.getElementById("color-option").color = color;
-    css('.color-option', 'color', color)
 
-    return color;
+    // After the color is picked, call function to set the color and change the element color
+    css('.color-option', 'color', color)
 }
 
 const css = (selector, property, value) => {
@@ -103,8 +102,9 @@ const css = (selector, property, value) => {
     }
 }
 
-const refreshPage = () => {
-    window.location.reload();
+const defaultColors = () => {
+    css('.color-option', 'color', '#8A2BE2');
+    css('.color-option', 'color', '#483D8B')
 }
 
 const gettingCuePoints = () => {
@@ -131,12 +131,11 @@ const listCuePoints = (data) => {
 	for (let i = 0; i < data.length; i++) {
         let newLine = '<div class="single-cue"><span id="msg-align">' + data[i].data.customKey + 
         '</span><span id="time-align">' +  timeConversion(data[i].time) + '</span></div>';
-		
+
         i !== data.length - 1 ? display.innerHTML += newLine : display.innerHTML += newLine;
         
         let select = '<option value=' + data[i].id + '><br>&nbsp;' + data[i].data.customKey + 
         '&nbsp;&nbsp;</option>';
-        
         document.getElementById('cue-list').innerHTML += select;
 	}
 }
