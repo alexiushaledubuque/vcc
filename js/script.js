@@ -47,7 +47,7 @@ const addingCuePoints = () => {
 	const msg = document.getElementById('add-cuepoint-msg').value;
 
     if (num <= 0 || !msg){
-        alert('Must select a cue point time and/or message to proceed!');
+        alert('Select valid cue point time and enter a message to proceed!');
     } else {
         player.addCuePoint(num, {
             customKey: msg
