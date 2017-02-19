@@ -25,6 +25,12 @@ fieldset, input, option {
   border-radius: 5px;
   border: 2px inset silver;
 }
+#add-cuepoint {
+  width: 50px;
+}
+#add-cuepoint-msg {
+  width: 285px;
+}
 #cue-msg {
   display: none;
   position: absolute; 
