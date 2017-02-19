@@ -41,28 +41,33 @@ const clearLog = () => {
 const addingCuePoints = () => {
 	const num = document.getElementById('add-cuepoint').value;
 	const msg = document.getElementById('add-cuepoint-msg').value;
-	player.addCuePoint(num, {
-        customKey: msg
-	}).then(function(id) {
-    // cue point was added successfully
-	}).catch(function(error) {
-    switch (error.name) {
-        case 'UnsupportedError':
-            // cue points are not supported with the current player or browser
-            break;
 
-        case 'RangeError':
-            // the time was less than 0 or greater than the video’s duration
-            break;
+    if (num <= 0 || !msg){
+        alert('Must select a cue point time and/or message to proceed!');
+    } else {
+        player.addCuePoint(num, {
+            customKey: msg
+        }).then(function(id) {
+        // cue point was added successfully
+        }).catch(function(error) {
+            switch (error.name) {
+                case 'UnsupportedError':
+                    // cue points are not supported with the current player or browser
+                    break;
 
-        default:
-            // some other error occurred
-            break;
+                case 'RangeError':
+                    // the time was less than 0 or greater than the video’s duration
+                    break;
+
+                default:
+                    // some other error occurred
+                    break;
+            }
+        });    
     }
-	});
-
+	
     gettingCuePoints(); // Auto-populate the cue log and the dropdown list with each new cue
-    document.getElementById('add-cuepoint').value = 0;
+    document.getElementById('add-cuepoint').value = '';
     document.getElementById('add-cuepoint').focus();
     document.getElementById('add-cuepoint-msg').value = '';	
 };
@@ -109,23 +114,29 @@ const listCuePoints = (data) => {
 
 const deletingACuePoint = () => {
     const id = document.getElementById('cue-list').value;
-    player.removeCuePoint(id).then(function(id) {
-    // cue point was removed successfully
-    }).catch(function(error) {
-        switch (error.name) {
-            case 'UnsupportedError':
-                // cue points are not supported with the current player or browser
-                break;
 
-            case 'InvalidCuePoint':
-                // a cue point with the id passed wasn’t found
-                break;
+    if (!id) {
+        alert('No cue points to delete. Must add them first!');
+    } else {
+        player.removeCuePoint(id).then(function(id) {
+        // cue point was removed successfully
+        }).catch(function(error) {
+            switch (error.name) {
+                case 'UnsupportedError':
+                    // cue points are not supported with the current player or browser
+                    break;
 
-            default:
-                // some other error occurred
-                break;
-        }
-    });
-    document.getElementById('cue-list').innerHTML = '';
-    gettingCuePoints();
+                case 'InvalidCuePoint':
+                    // a cue point with the id passed wasn’t found
+                    break;
+
+                default:
+                    // some other error occurred
+                    break;
+            }
+        });
+        document.getElementById('cue-list').innerHTML = '';
+        gettingCuePoints();    
+    }
+    
 }
