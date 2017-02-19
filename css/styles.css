@@ -18,7 +18,7 @@ h1, h2 {
   text-align: center;
   color: #8A2BE2;
 }
-legend, input {
+legend, input, h4 {
   color: #8A2BE2;
 }
 legend {
@@ -32,6 +32,9 @@ button {
 fieldset, input, option {
   border-radius: 5px;
   border: 2px inset #4682B4;
+}
+.cc {
+  margin-top: 6px;
 }
 #add-cuepoint {
   width: 50px;

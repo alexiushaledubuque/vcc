@@ -2,6 +2,7 @@
 const iframe = document.querySelector('iframe');
 const player = new Vimeo.Player(iframe);
 const display = document.getElementById('msg-output');
+
 let timeouts = [];
 
 // Set focus on adding time for cue point
@@ -80,6 +81,30 @@ const timeConversion = (sec) => {
     return moment().startOf('day')
             .seconds(sec)
             .format('H:mm:ss');
+}
+
+const getRandomColor = () => {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    // document.getElementById("color-option").color = color;
+    css('.color-option', 'color', color)
+
+    return color;
+}
+
+const css = (selector, property, value) => {
+    for (var i=0; i<document.styleSheets.length;i++) {//Loop through all styles
+        //Try add rule
+        try { document.styleSheets[i].insertRule(selector+ ' {'+property+':'+value+'}', document.styleSheets[i].cssRules.length);
+        } catch(err) {try { document.styleSheets[i].addRule(selector, property+':'+value);} catch(err) {}}//IE
+    }
+}
+
+const refreshPage = () => {
+    window.location.reload();
 }
 
 const gettingCuePoints = () => {
