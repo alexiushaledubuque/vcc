@@ -5,6 +5,7 @@ const display = document.getElementById('msg-output');
 const idOfVideo = '76979871';
 let videoTitle = '';
 
+// Array to handle message display duration
 let timeouts = [];
 
 // Set focus on adding time for cue point
@@ -32,8 +33,7 @@ player.on('cuepoint', function(data) {
     var overlay = document.getElementById('cue-msg');
     overlay.innerHTML = data.data.customKey + "<br>";
 
-    // Message display functionality - each message is displayed up to 5 seconds
-    // but is replaced by another message if the seconds conflict
+    // For each new cue point encountered, the array is destroyed and recreated 
 
     timeouts.forEach(function(v){
         window.clearTimeout(v);
@@ -41,15 +41,22 @@ player.on('cuepoint', function(data) {
 
     timeouts = [];
 
+    // New entry is made to erray for the newest cue point
+
     timeouts.push(window.setTimeout(() => {
         document.getElementById('cue-msg').innerHTML = ''; 
         document.getElementById('cue-msg').style.display = 'none'
     }, 5000));
 });
 
+// Button to remove elements from Video Cues log
+
 const clearLog = () => {
     document.getElementById('msg-output').innerHTML = '';
 }
+
+// User data is retrieved from standard input and passed to variables.
+// Player method is called with the data to add the cue point to the video
 
 const addingCuePoints = () => {
 	const num = document.getElementById('add-cuepoint').value;
@@ -79,17 +86,25 @@ const addingCuePoints = () => {
         });    
     }
 	
-    gettingCuePoints(); // Auto-populate the cue log and the dropdown list with each new cue
+    // Auto-populate the cue log and the dropdown list with each new cue
+    gettingCuePoints(); 
+
+    // Clear the inputs and reset focus for next input
     document.getElementById('add-cuepoint').value = '';
     document.getElementById('add-cuepoint').focus();
     document.getElementById('add-cuepoint-msg').value = '';	
 };
+
+// Using Moment.js to convert the seconds to hour:minute:seconds format
 
 const timeConversion = (sec) => {
     return moment().startOf('day')
             .seconds(sec)
             .format('H:mm:ss');
 }
+
+// Dynamically calculate a HTML color code & change stylesheet elements
+// when the button is clicked
 
 const getRandomColor = () => {
     const letters = '0123456789ABCDEF';
@@ -102,6 +117,8 @@ const getRandomColor = () => {
     css('.color-option', 'color', color)
 }
 
+// Special function to change the color of an html element
+
 const css = (selector, property, value) => {
     for (var i=0; i<document.styleSheets.length;i++) {//Loop through all styles
         //Try add rule
@@ -110,10 +127,14 @@ const css = (selector, property, value) => {
     }
 }
 
+// Return the colors to their default colors on button click
+
 const defaultColors = () => {
     css('.color-option', 'color', '#8A2BE2');
     css('.color-option', 'color', '#483D8B')
 }
+
+// Player method to retrieve all the cue points setup for the video
 
 const gettingCuePoints = () => {
 	player.getCuePoints().then(function(cuePoints) {
@@ -132,6 +153,8 @@ const gettingCuePoints = () => {
 	});
 };
 
+// Formats the HTML added to the DOM for each cue
+
 const listCuePoints = (data) => {
     display.innerHTML = '';
     document.getElementById('cue-list').innerHTML = '';
@@ -147,6 +170,8 @@ const listCuePoints = (data) => {
         document.getElementById('cue-list').innerHTML += select;
 	}
 }
+
+// Remove the cue point saved for the video
 
 const deletingACuePoint = () => {
     const id = document.getElementById('cue-list').value;
