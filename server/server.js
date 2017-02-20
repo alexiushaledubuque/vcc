@@ -29,28 +29,31 @@ var db = require('knex')({
 db.schema.hasTable('Videos').then(function(exists){
 	if (!exists){
 		db.schema.createTableIfNotExists('Videos', function(table){
-			table.increments();
+			table.increments('uid').primary();
 			table.string('video-id');
 			table.string('title');
+			table.timestamps();
 		}).then(function(){
 			console.log('Created Videos table');
 		});		
 	};	
 });
 
-// db.schema.hasTable('VideoCues').then(function(exists){
-// 	if (!exists){
-// 		db.schema.createTableIfNotExists('VideoCues', function(table){
-// 			table.increments();
-// 			table.string('cue-id');
-// 			table.number('cue-pt');
-// 			table.string('cue-msg');
-// 			table.string('video-id')
-// 		}).then(function(){
-// 			console.log('Created videos table');
-// 		});		
-// 	};	
-// });
+db.schema.hasTable('VideoCues').then(function(exists){
+	if (!exists){
+		db.schema.createTableIfNotExists('VideoCues', function(table){
+			table.increments('id').primary();
+			table.string('cue-id');
+			table.integer('cue-pt');
+			table.string('cue-msg');
+			table.string('video-id')
+					 .references('uid')
+					 .inTable('Videos');
+		}).then(function(){
+			console.log('Created videos table');
+		});		
+	};	
+});
 
 var port = 3000;
 
