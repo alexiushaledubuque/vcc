@@ -1,9 +1,20 @@
 # VCC
 
-## Setup
-To run the application in your development environment:
+## Setup - installations
 
-1. Clone this repo
+1. npm install 
+2. 
+
+npm install -S body-parser
+npm install bookshelf -S 
+npm install --save express
+npm install --save http-server
+npm install @vimeo/player --save
+npm install sqlite3 --save
+npm install knex --save
+
+
+Clone this repo
 2. Open the browser
 3. Select 'File/Open index.html'
 
