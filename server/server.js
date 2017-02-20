@@ -87,20 +87,23 @@ console.log('right before app.get');
 console.log('right after app.get');
 
 /**
- * POST & GET
+ * POST
  */
 
 console.log('right before app.post1');
 app.post('/js', function(req, res){
 	 db.insert({ videoID: req.body.video-id, title: req.body.title }).into('Videos')
-	 .asCallback(function(err, row){
-	 		if (err){
-	 			console.error('error cause: ', err.cause);
-	 		} else {
-	 			console.log(row);
-	 		}
-	 		console.log("Row inserted into Videos table");
-	 		res.sendStatus(201);
+	 .catch(function(err, row){
+	 		console.error('error cause: ', err.cause);
+	 }).then(function() {
+	 		return db.select('*')
+	 			.from('Videos')
+	 			.where('videoID', req.body.video-id);
+	 }).then(function(rows) {
+	 		console.log(rows[0]);
+	 })
+	 .catch(function(error) {
+	 		console.error(error);
 	 });
 });
 console.log('right after app.post1');
@@ -108,21 +111,20 @@ console.log('right after app.post1');
 console.log('right before app.post2');
 app.post('/js', function(req, res){
  	 db.insert({ cueID: req.body.cue-id, cuePT: req.body.cue-pt, cueMSG: req.body.cue-msg, videoID: req.body.video-id }).into('VideoCues')
- 	 .asCallback(function(err, row){
- 	 		if (err){
- 	 			console.error('error cause: ', err.cause);
- 	 		} else {
- 	 			console.log(row);
- 	 		}
- 	 		console.log("Row inserted into VideoCues table");
- 	 		res.sendStatus(201);
+ 	 .catch(function(err,row) {
+ 	 		console.error('error cause: ', err.cause);
+ 	 }).then(function() {
+ 	 		return db.select('*')
+ 	 			.from('VideoCues')
+ 	 			.where('videoID', req.body.video-id);
+ 	 }).then(function(rows) {
+ 	 		console.log(rows[0]);
+ 	 })
+ 	 .catch(function(error) {
+ 	 		console.error(error);
  	 });
 });
 console.log('right before app.post2');
-
- /**
- * UPDATE & GET
- */
 
  /**
  * DELETE & GET
@@ -141,7 +143,6 @@ console.log('right before app.post2');
 //  	 });
 // });
 // console.log('right before app.post2');
-
 
 /**
 	*	Localhost port for server activity

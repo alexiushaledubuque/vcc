@@ -2,8 +2,8 @@
 const iframe = document.querySelector('iframe');
 const player = new Vimeo.Player(iframe);
 const display = document.getElementById('msg-output');
-const video-title = '';
-const id-Of-Video = '';
+const idOfVideo = '76979871';
+let videoTitle = '';
 
 let timeouts = [];
 
@@ -22,6 +22,7 @@ player.on('play', function() {
 
 player.getVideoTitle().then(function(title) {
     console.log('title:', title);
+    videoTitle = title;
 });
 
 // Display video cue points
