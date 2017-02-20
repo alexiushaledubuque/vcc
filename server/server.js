@@ -76,7 +76,7 @@ app.use(express.static(staticPath));
  * GET
  */
 
-console.log('right before app.get');
+// console.log('right before app.get');
  app.get('/js', function(req, res){
  	db.select('*').from('Videos').then(function(data){
  		console.log("GET REQUEST ON BACKEND");
@@ -84,13 +84,13 @@ console.log('right before app.get');
  		console.log("server data: ", data);
  	});
  });
-console.log('right after app.get');
+// console.log('right after app.get'); - debugging server
 
 /**
  * POST
  */
 
-console.log('right before app.post1');
+// console.log('right before app.post1'); - debugging server
 app.post('/js', function(req, res){
 	 db.insert({ videoID: req.body.video-id, title: req.body.title }).into('Videos')
 	 .catch(function(err, row){
@@ -106,7 +106,7 @@ app.post('/js', function(req, res){
 	 		console.error(error);
 	 });
 });
-console.log('right after app.post1');
+// console.log('right after app.post1'); - debugging server
 
 console.log('right before app.post2');
 app.post('/js', function(req, res){
@@ -124,7 +124,7 @@ app.post('/js', function(req, res){
  	 		console.error(error);
  	 });
 });
-console.log('right before app.post2');
+// console.log('right before app.post2'); - debugging server
 
  /**
  * DELETE & GET

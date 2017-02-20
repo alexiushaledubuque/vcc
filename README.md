@@ -63,6 +63,8 @@ Web app
 	 b. Created 2 tables - Videos, VideoCues
 	 c. Route defined
 
+2. Running 'eslint' - results in warning because of the EcmaScript6 variable declarations 'const' or 'let'.
+
 ### Tech Stack
 	Front End
 	1. Vanilla Javascript
