@@ -1,0 +1,29 @@
+{
+  "name": "vimeo-coding-challenge",
+  "version": "1.0.0",
+  "description": "add messages to an embedded video",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexiushaledubuque/vcc.git"
+  },
+  "author": "Alexius Hale-Dubuque",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexiushaledubuque/vcc/issues"
+  },
+  "homepage": "https://github.com/alexiushaledubuque/vcc#readme",
+  "dependencies": {
+    "@vimeo/player": "^2.0.1",
+    "body-parser": "^1.16.1",
+    "bookshelf": "^0.10.3",
+    "express": "^4.14.1",
+    "http-server": "^0.9.0",
+    "knex": "^0.12.7",
+    "moment": "^2.17.1",
+    "sqlite3": "^3.1.8"
+  }
+}
