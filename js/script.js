@@ -5,7 +5,7 @@ const display = document.getElementById('msg-output');
 const idOfVideo = '76979871';
 let videoTitle = '';
 
-// Array to handle message display duration
+// Array to handle message display overlay duration time
 let timeouts = [];
 
 // Set focus on adding time for cue point
@@ -41,7 +41,7 @@ player.on('cuepoint', function(data) {
 
     timeouts = [];
 
-    // New entry is made to erray for the newest cue point
+    // New entry is made to the array for the newest cue point
 
     timeouts.push(window.setTimeout(() => {
         document.getElementById('cue-msg').innerHTML = ''; 
@@ -112,7 +112,7 @@ const getRandomColor = () => {
     }
 
     // After the color is picked, call function to set the color and change the element color
-    css('.color-option', 'color', color)
+    css('.color-option', 'color', color);
 }
 
 // Special function to change the color of an html element
@@ -129,7 +129,7 @@ const css = (selector, property, value) => {
 
 const defaultColors = () => {
     css('.color-option', 'color', '#8A2BE2');
-    css('.color-option', 'color', '#483D8B')
+    css('.color-option', 'color', '#483D8B');
 }
 
 // Clear the inputs and reset focus for next input
@@ -138,7 +138,6 @@ const clearInputs = () => {
     document.getElementById('add-cuepoint').focus();
     document.getElementById('add-cuepoint-msg').value = '';
 };
-     
 
 // Player method to retrieve all the cue points setup for the video
 
@@ -206,5 +205,4 @@ const deletingACuePoint = () => {
         clearInputs();
         gettingCuePoints();    
     }
-    
 }

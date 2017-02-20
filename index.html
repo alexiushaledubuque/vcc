@@ -20,6 +20,7 @@
 			  </div>
 			  <div id="cue-msg"></div>
 	  		<div class="methods-right">
+	  			<!-- Player Methods - to add a cue point & message. Also remove any cue point -->
 		    	<fieldset>
 		        <legend class="color-option">Player Methods</legend>
 		        <div class="cue-points">
@@ -35,9 +36,11 @@
 		      </fieldset>
 				</div>
 		    <div class="msg-wrapper">
+		    		<!-- Extra features to clear the cue list and re-render cue list -->
 	      	<button id="all-buttons" class="clear color-option" onClick="clearLog()">Clear Cue List</button>
 	      	<button id="all-buttons" class="get-video-cues color-option" onClick="gettingCuePoints()">Get Video Cues</button>
-	      	<!-- <label for=color-input>Color</label> -->
+	      	<!-- Extra feature to dynamically change some elements color even during video play -->
+	      		<!-- and reset the color to the original color with the default button -->
 	      	<fieldset class="color-changes">
 	      		<legend class="color-option">Color Controls</legend>
 	      		<div> 
@@ -45,6 +48,7 @@
               <button id="all-buttons" class="color-option" onClick="defaultColors()">Default</button>
           	</div>	
 	      	</fieldset>
+	      			<!-- Display all video cues like a message log -->
 	      	<h2 class="color-option">Video Cues:</h2>
 		      <p id="msg-output">
 		      	<ol id="display-cues"></ol>
@@ -52,8 +56,11 @@
 	      </div>
 		  </section>
 		</div>
+				<!-- Moment.js formats the date into time -->
 		<script src="http://momentjs.com/downloads/moment.js"></script>
+				<!-- Vimeo Player -->
 		<script src="https://player.vimeo.com/api/player.js"></script>
+				<!-- Custom Vanilla JavaScript -->
 		<script src="js/script.js"></script>
 	</body>
 </html>
