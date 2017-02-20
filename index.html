@@ -19,30 +19,30 @@
 			  	<iframe src="https://player.vimeo.com/video/76979871" width=640 height=485 frameborder=0 allowfullscreen></iframe>
 			  </div>
 			  <div id="cue-msg"></div>
-	  		<div class="right">
+	  		<div class="methods-right">
 		    	<fieldset>
 		        <legend class="color-option">Player Methods</legend>
 		        <div class="cue-points">
-		            <input id='add-cuepoint' type=number pattern=[0-9]+>
-		            <input id='add-cuepoint-msg' placeholder="cue message" type="text" maxlength="60">
-		            <button id='all-buttons' class="color-option" onClick="addingCuePoints()">Add Cue Point</button>
+		            <input id="add-cuepoint" type=number pattern=[0-9]+>
+		            <input id="add-cuepoint-msg" placeholder="cue message" type="text" maxlength="60">
+		            <button id="all-buttons" class="color-option" onClick="addingCuePoints()">Add Cue Point</button>
 		        </div>
 		        <div id="remove-cuepoint">
 		        		<!-- add text wrapping of cue message -->
 		        	<select id="cue-list" style="width:320px"></select> 
-		        	<button id='all-buttons' class="color-option" onClick="deletingACuePoint()">Remove Cue Point</button>
+		        	<button id="all-buttons" class="color-option" onClick="deletingACuePoint()">Remove Cue Point</button>
 		        </div>
 		      </fieldset>
 				</div>
 		    <div class="msg-wrapper">
-	      	<button id='all-buttons' class="clear color-option" onClick="clearLog()">Clear Cue List</button>
-	      	<button id='all-buttons' class="get-video-cues color-option" onClick="gettingCuePoints()">Get Video Cues</button>
+	      	<button id="all-buttons" class="clear color-option" onClick="clearLog()">Clear Cue List</button>
+	      	<button id="all-buttons" class="get-video-cues color-option" onClick="gettingCuePoints()">Get Video Cues</button>
 	      	<!-- <label for=color-input>Color</label> -->
 	      	<fieldset class="cc">
 	      		<legend class="color-option">Color Controls</legend>
 	      		<div> 
-              <button id='all-buttons' class="color-option" onClick="getRandomColor()">Random Color Picker</button>
-              <button id='all-buttons' class="color-option" onClick="defaultColors()">Default</button>
+              <button id="all-buttons" class="color-option" onClick="getRandomColor()">Random Color Picker</button>
+              <button id="all-buttons" class="color-option" onClick="defaultColors()">Default</button>
           	</div>	
 	      	</fieldset>
 	      	<h2 class="color-option">Video Cues:</h2>

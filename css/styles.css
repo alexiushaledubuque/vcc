@@ -88,7 +88,7 @@ h1, h2, #add-cuepoint, #add-cuepoint-msg, #cue-msg {
   color: #000080;
   overflow: scroll;
 }
-.right, .msg-wrapper {
+.methods-right, .msg-wrapper {
   float: left;
   margin: 0 20px 15px 40px;
 }
