@@ -26,6 +26,10 @@ var db = require('knex')({
 	useNullAsDefault: true
 });
 
+/**
+	*	Database Schema - 2 tables
+	*/
+
 db.schema.hasTable('Videos').then(function(exists){
 	if (!exists){
 		db.schema.createTableIfNotExists('Videos', function(table){
@@ -50,13 +54,15 @@ db.schema.hasTable('VideoCues').then(function(exists){
 					 .references('uid')
 					 .inTable('Videos');
 		}).then(function(){
-			console.log('Created videos table');
+			console.log('Created VideoCues table');
 		});		
 	};	
 });
 
-var port = 3000;
 
+/**
+	*	Define a static path to locate my static files to serve
+	*/
 var staticPath = path.join(__dirname, '../');
 
 /**
@@ -64,8 +70,87 @@ var staticPath = path.join(__dirname, '../');
 	*/
 app.use(express.static(staticPath));
 
+/***	HTTP Requests & Routes	***/
+
+/**
+ * GET
+ */
+
+console.log('right before app.get');
+ app.get('/js', function(req, res){
+ 	db.select('*').from('Videos').then(function(data){
+ 		console.log("GET REQUEST ON BACKEND");
+ 		res.send(data);
+ 		console.log("server data: ", data);
+ 	});
+ });
+console.log('right after app.get');
+
+/**
+ * POST & GET
+ */
+
+console.log('right before app.post1');
+app.post('/js', function(req, res){
+	 db.insert({ videoID: req.body.video-id, title: req.body.title }).into('Videos')
+	 .asCallback(function(err, row){
+	 		if (err){
+	 			console.error('error cause: ', err.cause);
+	 		} else {
+	 			console.log(row);
+	 		}
+	 		console.log("Row inserted into Videos table");
+	 		res.sendStatus(201);
+	 });
+});
+console.log('right after app.post1');
+
+console.log('right before app.post2');
+app.post('/js', function(req, res){
+ 	 db.insert({ cueID: req.body.cue-id, cuePT: req.body.cue-pt, cueMSG: req.body.cue-msg, videoID: req.body.video-id }).into('VideoCues')
+ 	 .asCallback(function(err, row){
+ 	 		if (err){
+ 	 			console.error('error cause: ', err.cause);
+ 	 		} else {
+ 	 			console.log(row);
+ 	 		}
+ 	 		console.log("Row inserted into VideoCues table");
+ 	 		res.sendStatus(201);
+ 	 });
+});
+console.log('right before app.post2');
+
+ /**
+ * UPDATE & GET
+ */
+
+ /**
+ * DELETE & GET
+ */
+// console.log('right before app.delete');
+// app.delete('/js', function(req, res){
+//  	 db.insert({ cueID: req.body.cue-id, cuePT: req.body.cue-pt, cueMSG: req.body.cue-msg, videoID: req.body.video-id }).into('VideoCues')
+//  	 .asCallback(function(err, row){
+//  	 		if (err){
+//  	 			console.error('error cause: ', err.cause);
+//  	 		} else {
+//  	 			console.log(row);
+//  	 		}
+//  	 		console.log("Row inserted into VideoCues table");
+//  	 		res.sendStatus(201);
+//  	 });
+// });
+// console.log('right before app.post2');
 
 
+/**
+	*	Localhost port for server activity
+	*/
+var port = process.env.PORT || 3000;
+
+ /**
+ * Start the server
+ */
 app.listen(port, function() {
   console.log('listening on port: ', port);
 });

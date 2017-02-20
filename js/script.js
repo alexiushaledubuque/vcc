@@ -2,6 +2,8 @@
 const iframe = document.querySelector('iframe');
 const player = new Vimeo.Player(iframe);
 const display = document.getElementById('msg-output');
+const video-title = '';
+const id-Of-Video = '';
 
 let timeouts = [];
 
@@ -9,6 +11,11 @@ let timeouts = [];
 document.getElementById('add-cuepoint').focus();
 
 // Player Events
+player.ready().then(function() {
+    // the player is ready
+    console.log('player is ready!');
+});
+
 player.on('play', function() {
     console.log('played the video!');
 });
