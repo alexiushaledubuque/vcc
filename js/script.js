@@ -90,9 +90,7 @@ const addingCuePoints = () => {
     gettingCuePoints(); 
 
     // Clear the inputs and reset focus for next input
-    document.getElementById('add-cuepoint').value = '';
-    document.getElementById('add-cuepoint').focus();
-    document.getElementById('add-cuepoint-msg').value = '';	
+    clearInputs();	
 };
 
 // Using Moment.js to convert the seconds to hour:minute:seconds format
@@ -133,6 +131,14 @@ const defaultColors = () => {
     css('.color-option', 'color', '#8A2BE2');
     css('.color-option', 'color', '#483D8B')
 }
+
+// Clear the inputs and reset focus for next input
+const clearInputs = () => {
+    document.getElementById('add-cuepoint').value = '';
+    document.getElementById('add-cuepoint').focus();
+    document.getElementById('add-cuepoint-msg').value = '';
+};
+     
 
 // Player method to retrieve all the cue points setup for the video
 
@@ -197,6 +203,7 @@ const deletingACuePoint = () => {
             }
         });
         document.getElementById('cue-list').innerHTML = '';
+        clearInputs();
         gettingCuePoints();    
     }
     

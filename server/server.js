@@ -8,7 +8,7 @@ var path = require('path');
 /**
 	*	Express Server
 	*/
-console.log('STARTING BACKEND ===>');
+// console.log('STARTING BACKEND ===>');
 
 var app = express();
 module.exports = app;
@@ -16,7 +16,7 @@ module.exports = app;
 /**
 	*	Database Server - Adding Persistence
 	*/
-console.log('STARTING THE DBS SERVER - CREATING THE TABLES');
+// console.log('STARTING THE DBS SERVER - CREATING THE TABLES');
 
 var db = require('knex')({
 	client: 'sqlite3',
@@ -27,7 +27,7 @@ var db = require('knex')({
 });
 
 /**
-	*	Database Schema - 2 tables
+	*	Database Schema - 2 tables - Videos & VideoCues
 	*/
 
 db.schema.hasTable('Videos').then(function(exists){
@@ -108,7 +108,7 @@ app.post('/js', function(req, res){
 });
 // console.log('right after app.post1'); - debugging server
 
-console.log('right before app.post2');
+// console.log('right before app.post2');
 app.post('/js', function(req, res){
  	 db.insert({ cueID: req.body.cue-id, cuePT: req.body.cue-pt, cueMSG: req.body.cue-msg, videoID: req.body.video-id }).into('VideoCues')
  	 .catch(function(err,row) {
@@ -127,7 +127,7 @@ app.post('/js', function(req, res){
 // console.log('right before app.post2'); - debugging server
 
  /**
- * DELETE & GET
+ * DELETE & GET - remove data from both Video & VideoCues tables
  */
 // console.log('right before app.delete');
 // app.delete('/js', function(req, res){
