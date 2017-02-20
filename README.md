@@ -37,12 +37,12 @@
 ### Accomplishments - Features
 
 Web app
-1. Embed a Vimeo video 	  							  		 - success
+1. Embed a Vimeo video 	  							  		  - success
 2. Interface to add a cue point and cue message - success
-3. Remove a cue points 						 						 - success
-4. Display list of cue points									 - success
-5. Overlay cue points on player								 - success
-6. Cue points appear at set timestamps					 - success
+3. Remove a cue points 						 						  - success
+4. Display list of cue points									  - success
+5. Overlay cue points on player								  - success
+6. Cue points appear at set timestamps				  - success
 
 ### Bonus Features
 
